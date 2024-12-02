@@ -26,6 +26,11 @@ def factorial(n):
         return "Error! Factorial of a negative number doesn't exist."
     return math.factorial(int(n))
 
+def square_root(a):
+    if a < 0:
+        return "Error! Square root of a negative number is not real."
+    return math.sqrt(a)
+
 def sine(a):
     return math.sin(math.radians(a))
 
@@ -34,6 +39,15 @@ def cosine(a):
 
 def tangent(a):
     return math.tan(math.radians(a))
+
+def sinh(a):
+    return math.sinh(a)
+
+def cosh(a):
+    return math.cosh(a)
+
+def tanh(a):
+    return math.tanh(a)
 
 def logarithm(a):
     if a <= 0:
@@ -44,6 +58,17 @@ def natural_log(a):
     if a <= 0:
         return "Error! Natural log of zero or negative number is undefined."
     return math.log(a)
+
+def radians_to_degrees(r):
+    return math.degrees(r)
+
+def degrees_to_radians(d):
+    return math.radians(d)
+
+def percentage(part, whole):
+    if whole == 0:
+        return "Error! Percentage calculation with a zero denominator."
+    return (part / whole) * 100
 
 def clear_screen():
     os.system('cls' if os.name == 'nt' else 'clear')
@@ -59,26 +84,33 @@ def calculator():
         print("5. Power")
         print("6. Modulus")
         print("7. Factorial")
-        print("8. Sine")
-        print("9. Cosine")
-        print("10. Tangent")
-        print("11. Logarithm (base 10)")
-        print("12. Natural Logarithm")
-        print("13. View History")
-        print("14. Clear Screen")
-        print("15. Exit")
+        print("8. Square Root")
+        print("9. Sine")
+        print("10. Cosine")
+        print("11. Tangent")
+        print("12. Hyperbolic Sine")
+        print("13. Hyperbolic Cosine")
+        print("14. Hyperbolic Tangent")
+        print("15. Logarithm (base 10)")
+        print("16. Natural Logarithm")
+        print("17. Radians to Degrees")
+        print("18. Degrees to Radians")
+        print("19. Percentage")
+        print("20. View History")
+        print("21. Clear Screen")
+        print("22. Exit")
         
-        choice = input("Enter choice (1-15): ")
+        choice = input("Enter choice (1-22): ")
         
-        if choice == '15':
+        if choice == '22':
             print("Exiting the calculator. Goodbye!")
             break
 
-        elif choice == '14':
+        elif choice == '21':
             clear_screen()
             continue
 
-        elif choice == '13':
+        elif choice == '20':
             if history:
                 print("\nCalculation History:")
                 for h in history:
@@ -111,29 +143,3 @@ def calculator():
             result = factorial(num)
             print(f"The result is: {result}")
             history.append(f"{num}! = {result}")
-
-        elif choice in ['8', '9', '10']:
-            num = float(input("Enter the angle in degrees: "))
-            if choice == '8':
-                result = sine(num)
-            elif choice == '9':
-                result = cosine(num)
-            elif choice == '10':
-                result = tangent(num)
-            print(f"The result is: {result}")
-            history.append(f"{choice}({num}) = {result}")
-
-        elif choice in ['11', '12']:
-            num = float(input("Enter a number: "))
-            if choice == '11':
-                result = logarithm(num)
-            elif choice == '12':
-                result = natural_log(num)
-            print(f"The result is: {result}")
-            history.append(f"{choice}({num}) = {result}")
-
-        else:
-            print("Invalid input. Please try again.")
-
-# Run the calculator
-calculator()
